@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linusromland.com - Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #e6edf3;
+            --accent-color: #ff9800;
+            --hover-bg: #21262d;
+            --border-radius: 16px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        .link-item {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            border: 2px solid transparent;
+            font-size: 1.4rem;
+            font-weight: bold;
+            flex-wrap: wrap;
+        }
+        .link-item:hover {
+            background: var(--hover-bg);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            border-color: var(--accent-color);
+        }
+        .link-item i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>linusromland.com - Dashboard</h1>
+        <div id="links" class="links-grid"></div>
+    </div>
+    <script>
+        const baseDomain = window.location.hostname;
+        const config = [
+            { name: "Proxmox", icon: "fa-solid fa-server" },
+            { name: "Portainer", icon: "fa-solid fa-layer-group" },
+            { name: "Nginx", icon: "fa-solid fa-globe" },
+            { name: "Wakapi", fullUrl: "https://wakapi.linusromland.com", icon: "fa-solid fa-chart-line" }
+        ];
+
+        const linksContainer = document.getElementById("links");
+        config.forEach(service => {
+            const url = service.fullUrl || `https://${service.name.toLowerCase()}.${baseDomain}`;
+            const link = document.createElement("a");
+            link.href = url;
+            link.className = "link-item";
+            link.target = "_blank";
+            link.innerHTML = `
+                <i class="${service.icon}"></i>
+                ${service.name}
+            `;
+            linksContainer.appendChild(link);
+        });
+    </script>
+</body>
+</html>
