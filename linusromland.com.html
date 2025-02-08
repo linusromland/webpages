@@ -1,235 +1,105 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>linusromland.com</title>
-		<style>
-			:root {
-				--primary-color: #2a3d45;
-				--highlight-color: #e63946;
-				--button-bg-color: #e63946;
-				--button-hover-bg-color: #d60819;
-				--social-button-bg-color: #000000;
-				--social-button-hover-bg-color: #3b3b3b;
-				--font-family: Arial, sans-serif;
-				--header-font-size: 4rem;
-				--header-font-size-mobile: 2rem;
-			}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linus Romland</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin: 10px 0 20px;
+            opacity: 0.8;
+        }
+        .links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #0d0d0d;
+        }
+        #tsparticles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="tsparticles"></div>
+    <div class="container">
+        <h1>Linus Romland</h1>
+        <p>Software Developer from Kungälv, Sweden</p>
+        <div class="links">
+            <a href="https://github.com/linusromland" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://linkedin.com/in/linusromland" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </div>
 
-			* {
-				font-family: var(--font-family);
-				text-align: center;
-				margin: 0;
-				padding: 0;
-				overflow: hidden;
-			}
-
-			.content {
-				position: relative;
-				z-index: 1;
-				display: flex;
-				flex-direction: row;
-				justify-content: space-evenly;
-				margin-top: 30vh;
-			}
-
-			.header {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-			}
-
-			.header h1 {
-				color: var(--primary-color);
-				font-size: var(--header-font-size);
-			}
-
-			.highlight {
-				color: var(--highlight-color);
-			}
-
-			.button {
-				display: inline-block;
-				padding: 10px 20px;
-				font-size: 18px;
-				cursor: pointer;
-				background-color: var(--button-bg-color);
-				color: white;
-				border: none;
-				border-radius: 9999px;
-				text-decoration: none;
-				box-shadow: 0 0 10px var(--button-bg-color);
-				transition: background-color 0.2s ease-in-out;
-			}
-
-			.button:hover {
-				background-color: var(--button-hover-bg-color);
-			}
-
-			.left,
-			.right {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				padding: 0 20px;
-				gap: 1rem;
-			}
-
-			.icon {
-				width: 200px;
-				height: 200px;
-				border-radius: 50%;
-				margin-top: 20px;
-			}
-
-			.social-buttons {
-				display: flex;
-				flex-direction: row;
-				gap: 1rem;
-				margin-top: 20px;
-			}
-
-			.social-button {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				background-color: var(--social-button-bg-color);
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				transition: background-color 0.2s ease-in-out;
-			}
-
-			.social-button:hover {
-				background-color: var(--social-button-hover-bg-color);
-			}
-
-			.social-button img {
-				width: 25px;
-				height: 25px;
-			}
-
-			.inverted-icon {
-				filter: invert(1);
-			}
-
-			@media (max-width: 1024px) {
-				.content {
-					flex-direction: column-reverse;
-					align-items: center;
-				}
-
-				.header,
-				.left {
-					align-items: center;
-				}
-			}
-
-			@media (max-width: 768px) {
-				.header h1 {
-					font-size: var(--header-font-size-mobile);
-				}
-			}
-		</style>
-
-		<link rel="icon" href="https://avatars.githubusercontent.com/u/48645689?v=4" />
-		<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
-	</head>
-	<body>
-		<div id="tsparticles"></div>
-		<div class="content">
-			<div class="left">
-				<div class="header">
-					<h1>Hi there,</h1>
-					<h1>I'm <span class="highlight">Linus Romland</span>.</h1>
-				</div>
-
-				<!-- <a href="https://romland.dev/" class="button">View My Projects </a> -->
-
-				<div class="social-buttons">
-					<a href="mailto:hello@linusromland.com" class="social-button">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Email" />
-					</a>
-					<a href="https://www.linkedin.com/in/linusromland/" class="social-button">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" />
-					</a>
-					<a href="https://github.com/linusromland/" class="social-button">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" class="inverted-icon" />
-					</a>
-				</div>
-			</div>
-			<div class="right">
-				<img src="https://avatars.githubusercontent.com/u/48645689?v=4" alt="Linus Romland" class="icon" />
-			</div>
-		</div>
-
-		<script>
-			let themeableContainer;
-
-			window.addEventListener('themeChange', (event) => {
-				themeableContainer.loadTheme(event.detail.newTheme);
-			});
-
-			tsParticles
-				.load('tsparticles', {
-					fpsLimit: 60,
-					particles: {
-						move: {
-							bounce: false,
-							direction: 'none',
-							enable: true,
-							outModes: 'out',
-							random: false,
-							speed: 1,
-							straight: false
-						},
-						number: { density: { enable: true, area: 800 }, value: 80 },
-						opacity: {
-							value: 0.5
-						},
-						size: {
-							value: { min: 1, max: 3 }
-						}
-					},
-					themes: [
-						{
-							name: 'light',
-							default: {
-								value: true,
-								mode: 'light'
-							},
-							options: {
-								background: {
-									color: '#fff'
-								},
-								particles: {
-									color: {
-										value: '#000'
-									}
-								}
-							}
-						},
-						{
-							name: 'dark',
-							default: {
-								value: true,
-								mode: 'dark'
-							},
-							options: {
-								background: {
-									color: '#000'
-								},
-								particles: {
-									color: {
-										value: '#fff'
-									}
-								}
-							}
-						}
-					]
-				})
-				.then((container) => {
-					themeableContainer = container;
-				});
-		</script>
-	</body>
+    <script>
+        tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            particles: {
+                move: { enable: true, speed: 1 },
+                number: { value: 80, density: { enable: true, area: 800 } },
+                opacity: { value: 0.5 },
+                size: { value: { min: 1, max: 3 } },
+                color: { value: "#fff" }
+            }
+        });
+    </script>
+</body>
 </html>
