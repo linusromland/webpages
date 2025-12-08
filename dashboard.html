@@ -84,15 +84,11 @@
     <script>
         const baseDomain = window.location.hostname;
         const config = [
-            { name: "Proxmox", icon: "fa-solid fa-server" },
-            { name: "Portainer", icon: "fa-solid fa-layer-group" },
+            { name: "Truenas", icon: "fa-solid fa-server" },
             { name: "Nginx", icon: "fa-solid fa-globe" },
             { name: "Jellyfin", icon: "fa-solid fa-film" },
-            { name: "Wakapi", fullUrl: "https://wakapi.linusromland.com", icon: "fa-solid fa-chart-line" },
-            { name: "MinIO", icon: "fa-solid fa-database" },
-            { name: "Grafana", icon: "fa-solid fa-chart-bar" },
-            { name: "Loki", icon: "fa-solid fa-book" },
-            { name: "Prometheus", icon: "fa-solid fa-burn" }
+            { name: "Home Assistant", fullUrl: "https://homeassitant.internal.linusromland.com/", icon: "fa-solid fa-house-signal" },
+            { name: "Wakapi", fullUrl: "https://wakapi.linusromland.com", icon: "fa-solid fa-chart-line" }
         ];
 
         const linksContainer = document.getElementById("links");
